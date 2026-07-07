@@ -1,16 +1,18 @@
-// 1. Import your CSS so the app looks good
-import './index.css'; // or './style.css' depending on what you named it in Week 1
 
-// 2. Import your new components
+import './index.css'; 
+
+
 import Sidebar from './components/Sidebar';
-import ChatWindow from './components/chat-window';
+import ChatWindow from './components/ChatWindow';
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
     return (
-        // 3. Assemble them inside the main container
+        <ProtectedRoute>
         <div className="app">
             <Sidebar />
             <ChatWindow />
         </div>
+        </ProtectedRoute>
     );
 }

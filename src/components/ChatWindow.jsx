@@ -3,7 +3,7 @@ import MessageBubble from './MessageBubble';
 import MessageInput from './MessageInput';
 
 export default function ChatWindow() {
-    // State to hold our chat history
+    
     const [messages, setMessages] = useState([
         { text: "Hello", isSent: false },
         { text: "Hii", isSent: true }
@@ -11,13 +11,13 @@ export default function ChatWindow() {
 
     const messagesEndRef = useRef(null);
 
-    // Function to add a new message to the state
+    
     const handleSendMessage = (newText) => {
         const newMessage = { text: newText, isSent: true };
         setMessages((prevMessages) => [...prevMessages, newMessage]);
     };
 
-    // Auto-scroll to the bottom whenever messages update
+    
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
@@ -27,7 +27,7 @@ export default function ChatWindow() {
             <div className="chat-header">Soham</div>
             
             <div className="messages">
-                {/* Loop through the array and render a bubble for each message */}
+                
                 {messages.map((msg, index) => (
                     <MessageBubble 
                         key={index} 
