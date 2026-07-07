@@ -5,20 +5,20 @@ import { db } from '../firebase';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { useAuth } from '../context/AuthContext';
 
-export default function ChatWindow({ selectedUser }) { // <-- Catch the selected user prop
+export default function ChatWindow({ selectedUser }) { 
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null);
   const { user } = useAuth();
 
-  // --- Real-time Listener for Private Rooms ---
+ 
   useEffect(() => {
-    // If the user hasn't clicked on a contact yet, don't set up a database listener
+    
     if (!selectedUser) return;
 
-    // Generate a unique, sorted room ID for this pair of users
+   
     const roomId = [user.uid, selectedUser.uid].sort().join("_");
 
-    // Point to the messages subcollection inside that specific private room
+    
     const q = query(
       collection(db, "chats", roomId, "messages"), 
       orderBy("createdAt", "asc")
